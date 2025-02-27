@@ -18,12 +18,12 @@ def nothing(x):
 
 def initialize_camera(camera_index=0):
 	cap = cv2.VideoCapture(camera_index)
-    
+
 	# Check if the cam is opened correctly
 	if not cap.isOpened():
 		print("Error: Could not open camera.")
 		return None
-        
+
 	return cap
 
 
@@ -40,7 +40,7 @@ def process_frame(frame, method):
 	elif method == 3:
 		frame = orb_feature_detector(frame)
 		cv2.putText(frame,'ORB',(5,470), font, font_size, font_color, font_thickness, line_type)
-		
+
 
 	return frame
 
@@ -66,10 +66,10 @@ def menu(frame):
 	cv2.putText(frame, "[3] Feature Detection", (5, 45), font, font_size, font_color, font_thickness, line_type)
 	cv2.putText(frame, "[q] Exit", (5, 60), font, font_size, font_color, font_thickness, line_type)
 
-	
+
 
 def main():
-	
+
 	# Display menu
 
 	cv2.namedWindow("Original Frame")
@@ -97,14 +97,14 @@ def main():
 
 		# Process the frame with a chosen (set) of functions
 		output_frame = process_frame(frame, selected_method)
-        
+
 		# Display the original frame
 		menu(frame)
 		cv2.imshow('Original Frame', frame)
 
 		# Display the processed frame
 		cv2.imshow('Processed Frame', output_frame)
-        
+
 		# Check for key press
 		key = cv2.waitKey(1) & 0xFF
 		if key == ord('1'):
@@ -124,4 +124,4 @@ def main():
 	cv2.destroyAllWindows()
 
 if __name__ == "__main__":
-	main() 
+	main()

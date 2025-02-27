@@ -8,12 +8,12 @@ def nothing(x):
 
 def initialize_camera(camera_index=0):
 	cap = cv2.VideoCapture(camera_index)
-    
+
 	# Check if the cam is opened correctly
 	if not cap.isOpened():
 		print("Error: Could not open camera.")
 		return None
-        
+
 	return cap
 
 def process_frame(frame):
@@ -49,13 +49,13 @@ def main():
 
 		# Process the frame with a chosen (set) of functions
 		output_frame = process_frame(frame)
-        
+
 		# Display the original frame
 		cv2.imshow('Original Frame', frame)
 
 		# Display the processed frame
 		cv2.imshow('Processed Frame', output_frame)
-        
+
 		# Check for 'q' key press to quit the application
 		# waitKey(1) returns -1 if no key is pressed
 		if cv2.waitKey(1) & 0xFF == ord('q'):
@@ -66,4 +66,4 @@ def main():
 	cv2.destroyAllWindows()
 
 if __name__ == "__main__":
-	main() 
+	main()
